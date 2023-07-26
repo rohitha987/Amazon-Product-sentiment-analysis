@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Search Autocomplete Example</title>
+   <style>
+    * {
+  box-sizing: 500px;
+}
+
+body {
+  font: 16px Arial;  
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+html {
+   min-height: 100%;
+   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),url("/static/images/Grey Illustration Finance Youtube Thumbnail.png");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+
+   z-index: 2;
+}
+
+body{
+   z-index: 1;
+}
+
+#div1{
+    align-items: center;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    top: 50%;
+    left: 50%;
+    margin-left: 200px;
+    margin-right: 100px;
+    z-index: 1;
+}
+#div2{
+    margin-top: 35px;
+    margin-bottom: 20px;
+    margin-left: -80px;
+    z-index: 1;
+}
+#div3{
+    text-align: left;
+    justify-content: left ;
+    width: 800px;
+    margin-left: 50px;
+    z-index: 1;
+}
+button{
+   width:60px;
+   height:58px;
+   background-color: gray;
+}
+#search-input{
+    width: 800px;
+    height: 35px;
+     
+}
+      #search-results {
+      width: 800px;
+      position: absolute;
+      z-index: 1;
+      list-style-type: none;
+      margin-left: 100px;
+      padding: 0px;
+    }
+      
+      #search-results li:nth-child(-n+10) {
+      width: 800px;
+      height:32px;
+      padding: 5px;
+      background-color: #bebcc2;
+      outline: 1px solid #8e8b8f;
+      cursor: pointer; }
+      #search-results li:nth-child(n+11) {
+      display: none; }
+      #search-results li:hover {
+      background-color: #f0edf4;  }
+   </style>
+</head>
+<body >
+   <div class="bg-container">
+      <form action="" method="post">
+         <div id="div1">
+            <div id="div2">
+                <label for="search-input" style="font-size:160%" >Enter the product name</label><br>
+            </div>
+            
+            <input type="text" id="search-input" name="search-input" autocomplete="off" ><a><button type="submit" id="myBtn">Go</button></a>
+            <div id="div3">
+                <ul id="search-results" onclick="getFocus()"></ul>
+            </div>
+            
+         </div>
+       
+       <p id="demo"></p>
+      </form>
+   </div>
+   
+   <script>
+      function getFocus() {
+         document.getElementById("search-input").focus();
+         }
+
+      window.onload = function() {
+      document.getElementById("search-input").focus();
+      };
+      document.getElementById('search-input')
+    .addEventListener('keypress', function(event) {
+        if (event.key === 'Enter')
+        {
+            event.preventDefault();
+            document.getElementById("myBtn").click();
+            /*var x = document.getElementById("search-input").autofocus;
+            document.getElementById("demo").innerHTML = x;*/
+        }
+    });
+   </script>
+    
+   
+   <script>
+      let searchInput = document.getElementById('search-input');
+      let searchResults = document.getElementById('search-results');
+      // define your search data as an array of strings
+      let searchData = [
+  'Samsung Galaxy M04',
+  'Samsung Galaxy M14 5G',
+  'Samsung Galaxy M33 5G',
+  'Samsung Galaxy S20 FE 5G',
+  'Samsung Galaxy A14 5G',
+  'Samsung Galaxy A23 Blue',
+  'Samsung Galaxy M53 5G',
+  'Samsung Galaxy S22 Ultra 5G',
+  'Samsung Galaxy A73 5G',
+  'Samsung Galaxy Note10+',
+  'OnePlus Nord CE 3 Lite 5G',
+  'OnePlus Nord CE 2 Lite 5G',
+  'OnePlus 10R 5G',
+  'OnePlus 11 5G (Eternal Green)',
+  'OnePlus Nord N20 SE',
+  'OnePlus 10T 5G',
+  'OnePlus 11R 5G',
+  'OnePlus Nord 2T 5G',
+  'OnePlus 10 Pro 5G',
+  'OnePlus 11 5G (Marble Odyssey)',
+  'Oppo A78 5G',
+  'Oppo F21s Pro',
+  'Oppo A17',
+  'Oppo A77s',
+  'OPPO A15s',
+  'Oppo F23 5G',
+  'Oppo A57',
+  'OPPO Reno3 Pro',
+  'Oppo Reno8 5G',
+  'OPPO F17 Pro',
+  "Fastrack Economy Analog White Dial Men's Watch",
+  "Fastrack Casual Analog Black Dial Men's Watch",
+  "Fastrack Analog Men's Watch (Dial Colored Strap)",
+  "Fastrack Autumn-Winter 19 Analog-Digital Orange Dial Men's Watch",
+  "Fastrack Analog Silver Dial Men's Casual Watch",
+  "Fastrack Analog Dial Women's Watch",
+  "Fastrack Hip Hop Analog White Dial Women's Watch",
+  "Fastrack Trendies Analog Red Dial Women's Watch",
+  "Fastrack Analog Silver Dial Women's Watch",
+  "Fastrack Upgrade-Core Analog Dial Women's Watch",
+  "TIMEX Analog Men's Watch (Dial Colored Strap)",
+  "TIMEX Analog Women's Watch",
+  "TIMEX Analog Black Dial Men's Watch",
+  "TIMEX Analog Women's Watch (Dial Colored Strap)",
+  "TIMEX Men's Analog White Dial Coloured Quartz Watch, Round Dial Rose Gold Stainless Steel Case",
+  "TIMEX Classics Analog White Dial Men's Watch",
+  "TIMEX Analog Blue Dial Men's Watch",
+  "TIMEX Analog Rose Gold Dial Women's Watch",
+  "TIMEX Analog Blue Dial Women's Watch",
+  "TIMEX Analog Champagne Dial Women's Watch",
+  "Titan Neo Iv Analog Black Dial Men's Watch",
+  "Titan Ladies Neo Economy Analog White Dial Women's Watch",
+  "Titan Maritime Analog White Dial Men's Watch",
+  "Titan Karishma Analog Black Dial Men's Watch",
+  'Titan Neo Men’s Designer Watch',
+  "Titan Analog Blue Dial Men's Watch",
+  "Titan Autumn-Winter 19 Analog Rose Gold Dial Women's Watch",
+  "Titan Raga Viva Analog Pink Dial Women's Watch",
+  "Titan Youth Analog Pink Dial Women's Watch",
+  "Titan Ladies Neo-Ii Analog Rose Gold Dial Women's Watch",
+  'HP Envy x360 for Creators',
+  'HP Laptop 14s',
+  'HP 247 G8 Laptop',
+  'HP Laptop 15s',
+  'HP Pavilion 14',
+  'HP Zbook Power G4-A',
+  'Hp Pavilion 15',
+  'HP Pavilion x360',
+  'HP Victus Gaming Latest',
+  'HP Pavilion Aero',
+  'Lenovo IdeaPad Slim 3',
+  'Lenovo Ideapad 3',
+  'Lenovo V15',
+  'Lenovo IdeaPad Slim 1',
+  'Lenovo IdeaPad Gaming 3',
+  'Lenovo Yoga Slim 7 Pro',
+  'Lenovo IdeaPad D330',
+  'Lenovo IdeaPad Slim 5',
+  'Lenovo IdeaPad Flex 5',
+  'Lenovo Legion 5',
+  'ASUS TUF Gaming F15',
+  'ASUS Vivobook 16X (2022)',
+  'ASUS TUF Gaming A15',
+  'ASUS Vivobook S15 OLED 2022',
+  'ASUS VivoBook 14',
+  'ASUS Vivobook 15',
+  'ASUS ROG Strix G17 (2022)',
+  'ASUS VivoBook K15 OLED 2021',
+  'ASUS ROG Strix G17',
+  'ASUS ROG Strix G17 (2022)'
+];
+      
+      // function to filter search results
+      function filterResults(query) {
+         return searchData.filter(item => item.toLowerCase().includes(query.toLowerCase()));
+      }
+      
+      // function to display search results
+      function displayResults(results) {
+         searchResults.innerHTML = '';
+         results.forEach(result => {
+            let li = document.createElement('li');
+            li.textContent = result;
+            li.addEventListener('click', () => {
+               searchInput.value = result;
+               searchResults.innerHTML = '';
+            });
+            searchResults.appendChild(li);
+         }); 
+      }
+      
+      // event listener for search input
+      searchInput.addEventListener('input', () => {
+         let query = searchInput.value;
+         if (query === '') {
+            searchResults.innerHTML = '';
+         } else {
+            let results = filterResults(query);
+            displayResults(results);
+         } 
+      });
+      
+      // event listener to close search results when clicking outside the input and the results
+      document.addEventListener('click', (event) => {
+         let isClickInsideInput = event.target === searchInput;
+         let isClickInsideResults = searchResults.contains(event.target);
+         if (!isClickInsideInput && !isClickInsideResults) {
+            searchResults.innerHTML = '';
+         } 
+      });
+   </script>
+</body>
+</html>

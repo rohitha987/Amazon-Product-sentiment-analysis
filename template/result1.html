@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aspect-Based Analysis</title>
+    <style>
+       body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),url('https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210722215846/sentiment-analysis.jpg');
+  background-size: 750px;
+  background-position: 10px;
+  
+}
+
+.container {
+  display: flex;
+  gap: 100px; /* Adjust the gap size as needed */
+  size: 100 px;
+}
+
+.aspect-box {
+  flex: 1;
+  border: 1px solid #ccc;
+  background-color:rgb(211, 211, 211);
+  padding: 10px;
+  size: 1000px;
+  margin-bottom: 20px;
+}
+
+.aspect-box h2 {
+  color: #191717;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50 px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: rgb(105, 166, 172);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+h1{
+    justify-content: center;
+}
+
+button:hover {
+  background-color: rgb(88, 170, 205);
+}
+
+.separator {
+  width: 100%;
+  height: 30px; /* Adjust the spacing height as needed */
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Aspect-Based Analysis for:<a>{{prod_name}}</a></h1>
+
+    <div class="container">
+        <div class="aspect-box">
+            <h2>Positive Aspects:</h2>
+            <ul>
+                {% for aspect in positive_aspects %}
+                    <li>{{ aspect }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="aspect-box">
+            <h2>Negative Aspects:</h2>
+            <ul>
+                {% for aspect in negative_aspects %}
+                    <li>{{ aspect }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+
+    <a href="example1.html"> <button>Go back</button></a>
+</body>
+</html>
+
+

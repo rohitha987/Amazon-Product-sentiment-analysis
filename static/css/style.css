@@ -1,0 +1,80 @@
+
+html{
+    background-color: rgb(46, 42, 50);
+}
+body{
+    font-family: 'Nunito', sans-serif;
+    background-color: #4e4c50;
+}
+.h1{
+    color:white;
+}
+h2{
+    margin-top: 15px;
+    text-align: center;
+    color: #1c1b1e;
+}
+.btn{
+    background-color: white;
+    border: 1px solid #1c1b1e;
+    color: #1c1b1e;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 10px;
+}
+.btn:hover{
+    background-color: #1c1b1e;
+    color:white;
+    cursor:pointer;
+}
+#alm{
+    color:#1c1b1e;
+    font-weight: bolder;
+}
+p{
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.divCover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divCover img{
+    width: 70%;
+}
+a{
+    text-decoration: none !important;
+}
+#userFullNameError, #userQualificationError, #userLocationError, #userEmailError, #userPasswordError, #userSIEmailError, #userSIPasswordError, #userBioError, #editProfileForm{
+    display: none;
+}
+
+#userAvatar{
+    width: 120px;
+    height: 120px;
+}
+#togglePassword {
+    float: right;
+    margin-left: 385px;
+    margin-right: 18px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+#togglePassword1 {
+    float: right;
+    margin-left: 385px;
+    margin-right: 18px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  
+  
