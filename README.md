@@ -24,4 +24,6 @@ WEB DEVELOPMENT TECHNOLOGIES :  •	HTML
                                 •	JavaScript
 WEB FRAMEWORK :	Flask
 
+You can view the screenshots of the website in the ppt file
+
 
